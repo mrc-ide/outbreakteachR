@@ -1,0 +1,30 @@
+Package: outbreakteachR
+Type: Package
+Title: Demonstration of analysis associated to "paper outbreak" teaching practical
+Version: 0.1.0
+Author: Oliver Waton
+Maintainer: Oliver Watson <o.watson@imperial.ac.uk>
+Description: Importing and analysing data sheet created within teaching "paper
+    outbreak"
+Depends:
+    R (>= 3.0),
+    ndtv,
+Imports:
+    network (>= 1.13),
+    networkDynamic (>= 0.9),
+    animation (>= 2.4),
+    sna,
+    ggplot2,
+    scales (>= 0.4.1),
+    igraph,
+    reshape2,
+    XLConnect,
+    extrafont,
+    statnet.common,
+    base64,
+    plyr,
+    rJava,
+    XLConnectJars
+License: GPL 2.0
+LazyData: TRUE
+RoxygenNote: 5.0.1

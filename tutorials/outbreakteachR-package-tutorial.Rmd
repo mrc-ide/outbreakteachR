@@ -1,0 +1,236 @@
+---
+title: "outbreakteachR package tutorial overview"
+author: "OJ Watson"
+date: '`r Sys.Date()`'
+output:
+  html_document:
+    toc: yes
+    css: knitr.css
+    code_folding: show
+    fig_caption: yes
+    theme: readable
+    toc_float: yes
+
+---
+
+## Overview 
+
+  The outbreakteachR R package has been designed to be an additional tool in helping assist
+with running the "paper outbreak" practical. The package assumes that the data has
+been collected and stored in a similar fashion to that presented within the xlsx file
+included within the external data directory, and that the main data from the first 
+sheet in the excel document, between cell A2:Oxxx, is to be used.
+
+  Given the above specifications, the tutorial below will give an overview of how
+to read in the data and produce a number of plots to help visualise the outbreak and
+present the key epidemiological parameters.
+
+## Loading the data
+
+First we will read in the data from wherever you have stored the .xlsx file. Below
+we will be using the example included with the package. The output of the following
+section is stored within the package as well as a sample dataset called "paper.outbreak.2016".
+If you are using the sample dataset in the remainder of the tutorial then remember to
+set the outbreak.dataset variable equal to paper.outbreak.2016.
+
+
+```{r Loading the data, include=TRUE, message = FALSE, warning = FALSE}
+
+# First make sure the package is installed
+#devtools::install_github("OJWatson/outbreakteachR")
+
+# Load package - Warning messages will be thrown however these are not a problem
+library(outbreakteachR)
+
+# With the package installed first read in the data.
+# This function will throw warnings highlighting rows where there may be errors in the excel file
+# Remember to replace the argument for xlsx.file to the local file path where your saved worksheet is
+# If it is on your desktop it will look something like xlsx.file = "C:/Users/Bob/Desktop/savedworksheet.xlsx"
+outbreak.dataset <- outbreakteachR::outbreak_dataset_read(xlsx.file = system.file("extdata","2016_solutions_final.xlsx",package="outbreakteachR"),
+                                                 attempt.imputation = TRUE)
+
+# Visualise the dataset
+str(outbreak.dataset)
+
+# This dataset is also saved within the outbreakteachR package and can be accessed as such:
+data("paper.outbreak.2016",package="outbreakteachR")
+## Confirm the datasets are the same
+identical(paper.outbreak.2016,outbreak.dataset)
+
+# If you are using the sample dataset for the remainder of the tutorial then 
+# uncomment the following line of code:
+
+# outbreak.dataset <- paper.outbreak.2016
+```
+
+## Create an infection network
+
+For the next task we will need to subset the collected data so that we are only
+looking at those cases that were not reinfections. Using this subset of the data
+we will then be able to plot a number of static images from the network that will
+enable us to sere how the outbreak progressed in time.
+
+```{r Create an infection network, include=TRUE, fig.align = "center", cache = T}
+
+# Convert the read outbreak dataset into only the non-reinfections
+first_infection_list <- outbreakteachR::first_infection_list(outbreak.dataset)
+
+# The above function has now sorted our data into a list of two dataframes. These
+# data frames show the "linelist" and "contacts" data. We can now see that the
+# linelist data only possesses information about contacts that were not reinfections:
+
+unique(first_infection_list$linelist$Reinfection)
+
+# Next we will create a plot of the outbreak that is time-orientated, i.e. the relative
+# node positions represents the point in time that an individual was infected:
+
+outbreakteachR::infection_network_plot(first_infection_list = first_infection_list, time = TRUE, log = FALSE)
+
+# We might find that the outbreak is quite cramped in teh above as a lot of infections happen over 
+# a very short time frame with respect to the 5 day outbreak. We can thus log transform the times of
+# infection to spread out the outbreak for further clarity at the earlier stages
+
+outbreakteachR::infection_network_plot(first_infection_list = first_infection_list, time = TRUE, log = TRUE)
+
+# We can also visualise the network in a more "tree" like fashion which shows each
+# infection event with an equal length branch for easier visualisation:
+
+outbreakteachR::infection_network_plot(first_infection_list = first_infection_list, time = FALSE)
+
+# Lastly we can visualise what the outbreak looked like by viewing the outbreak
+# at the end of each day, i.e. at 24 hour intervals
+
+outbreakteachR::daily_timeseries_plot(first_infection_list=first_infection_list)
+
+```
+
+## Animate the infection network
+
+So far we have only been able to visualise the outbreak at discrete moments in
+time. To improve this we can also create an html page showing an animation of the
+outbreak process. (This will take a minute or two).
+
+```{r Animate the infection network, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center", cache=TRUE}
+
+# Change the file parameter to wherever you want the html to be stored
+  outbreakteachR::animate_infection_network(first_infection_list=first_infection_list,
+                            file=paste(getwd(),"/Animated-Network-Dynamic.html",sep=""),
+                            year=2016,
+                            detach=FALSE)
+                            
+```
+
+When you run the above function the animated network will automatically load in
+a web browser and save the html page to file path specified. This html is embedded
+below, and the animated network can be viewed by clicking play, and the duration
+of the animation changed with the menu in the top left. To view the html page
+output in a new tab please click [here](https://cdn.rawgit.com/OJWatson/outbreakteachR/master/tutorials/Animated-Network-Dynamic.html)
+
+
+<iframe width="800" height="630" frameBorder="0" src="https://cdn.rawgit.com/OJWatson/outbreakteachR/master/tutorials/Animated-Network-Dynamic.html" allowfullscreen></iframe>
+
+## Epidemic Time Series
+
+We can also use the collected data to plot the epidemic time series, using the times
+recorded for when the infection started and ended in each individual.
+
+```{r Epidemic Time Series, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center"}
+
+outbreakteachR::epidemic_timeseries_plot(first_infection_list = first_infection_list)
+
+```
+
+## Parameter investigation
+
+We can also examine the distribution of the epidemiological parameters.
+
+```{r Epidemiological parameter investigation, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center"}
+
+outbreakteachR::paramater_boxplots_plot(outbreak.dataset=outbreak.dataset)
+
+```
+
+We might also want to view the offspring distribution to see how it compares to the poisson distribution that was used 
+to generate the actual observed data. 
+
+```{r Offspring distribution, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center"}
+
+outbreakteachR::offspring_distribution_plot(outbreak.dataset=outbreak.dataset,include.reinfectons = TRUE,title = 2016)
+
+```
+
+What we can see from above is the confirmed number of secondary cases from each individual,
+which has a mean very close to 1.8. However if we might also want to look at the distribution
+describing only the succesful contacts, i.e. those that led to infections rather than reinfections. 
+
+```{r Offspring distribution with zero, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center"}
+
+outbreakteachR::offspring_distribution_plot(outbreak.dataset=outbreak.dataset, include.reinfectons = FALSE,title=2016)
+
+```
+
+## Simulated outbreaks
+
+It can often be very useful to see how this outbreak may compare to a simulated outbreak.
+To do this we can use the following function to simulate 200 outbreaks and plot
+the interquartile range of these simulations: 
+
+```{r Simulated outbreaks, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center"}
+
+outbreakteachR::bootstrap_simulated_plot(
+  first_infection_list = first_infection_list,
+  outbreak.dataset = outbreak.dataset, 
+  lower.quantile=0.25,
+  upper.quantile=0.75,
+  include.observed = T,
+  replicates = 200)
+
+```
+
+To give some more information into how the simulated outbreaks are modeled. 
+For these simulations we assume each simulation is seeded with three infections 
+at the same time as the observed outbreak, and has a total population size equal to the 
+outbreak dataset. The number of secondary infections is then drawn from a Poisson 
+distribution with a mean of 1.8, as was used in the practical. The time of each 
+infection  is also drawn from a Poisson with a mean equal to the observed 
+mean generation times. The infected individual then recovers after a period of time, 
+which is sampled from a poisson with mean equal to the mean infectious period. 
+If they do not infect anyone then they recover after a period of time drawn from a 
+poisson with mean equal to the mean recovery time for the observed outbreak. 
+Simulations are then stopped after a period of time equal to the length of the observed outbreak.
+
+Given this simulation methodology we can start to hypothesise about why the simulated
+outbreaks are delayed when compared to the observed. If we look back at the box plots
+of the generation and recover times we can see that the data clearly does not 
+follow a Poisson distribution, but is multimodal with a period of approximately 
+2 hours. As a result we might choose to conduct the simulations again but sampling
+generation times, infectious periods and recovery times from the observed outbreak:
+
+```{r Simulated outbreaks with sampling, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center"}
+
+outbreakteachR::bootstrap_simulated_plot(
+  first_infection_list = first_infection_list,
+  outbreak.dataset = outbreak.dataset, 
+  lower.quantile = 0.25,
+  upper.quantile = 0.75,
+  include.observed = T,
+  replicates = 200,
+  sampling = TRUE)
+
+```
+
+This simulation is much better, with the timing of the infection peak much closer
+to the observed data. This sampling method however still fails to perfectly capture the
+temporal dynamics exhibited. There are many reasons why this is, but we can begin
+to understand why this is by simply seeing how many infections there are that occured on
+day 1, which is much larger than would be expected given 3 seeds and the generation
+times that we sampled. 
+
+## Summary and further thoughts
+
+Hopefully the above tutorial has shown how the outbreakteachR outbreak practical can be extended
+using R to extend the analysis and aid in visualising the outbreak process.
+
+---
+
+
