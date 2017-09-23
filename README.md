@@ -7,7 +7,7 @@
 outbreakteachR is a package designed to assist in demonstration of analysis associated to "paper outbreak" teaching practical. It is a collection of functions designed to ease analaysis of the paper outbreak practical within R. This includes importing and cleaning data from an excel sheet, viewing the infection network, visualising the outbreak as an animation, and calculating the epidemiological parameters associated with the practical.
 
 ***
-> To view the tutorial please click [here](https://cdn.rawgit.com/OJWatson/outbreakteachR/6b4a976e/tutorials/outbreakteachR-package-tutorial.html)
+> To view the tutorial please click [here](https://cdn.rawgit.com/mrc-ide/outbreakteachR/6b4a976e/tutorials/outbreakteachR-package-tutorial.html)
 
 ***
 
@@ -25,7 +25,7 @@ Once devtools is installed it is best to restart our R session. To do this eithe
 has been restarted the package can be installed and loaded using:
 
 ```r
-devtools::install_github("OJWatson/outbreakteachR")
+devtools::install_github("mrc-ide/outbreakteachR")
 library(outbreakteachR)
 ```
 
@@ -33,4 +33,4 @@ library(outbreakteachR)
 
 #### Asking a question
 
-For bug reports, feature requests, contributions, use github's [issue system.](https://github.com/OJWatson/outbreakteachR/issues)
+For bug reports, feature requests, contributions, use github's [issue system.](https://github.com/mrc-ide/outbreakteachR/issues)
