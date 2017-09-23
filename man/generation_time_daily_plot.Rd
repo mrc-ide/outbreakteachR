@@ -22,4 +22,3 @@ generation_time_daily_plot(outbreak.dataset, title = NULL, alpha = NA,
 \code{generation_time_daily_plot} takes output of \code{outbreak_dataset_read} and
 plots dotplots for each day showing he generation times
 }
-

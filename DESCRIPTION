@@ -7,7 +7,7 @@ Maintainer: Oliver Watson <o.watson@imperial.ac.uk>
 Description: Importing and analysing data sheet created within teaching "paper
     outbreak"
 Depends:
-    R (>= 3.0),
+    R (>= 3.3.2),
     ndtv,
 Imports:
     network (>= 1.13),
@@ -27,4 +27,4 @@ Imports:
     XLConnectJars
 License: GPL 2.0
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

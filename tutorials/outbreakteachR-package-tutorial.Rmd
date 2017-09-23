@@ -172,7 +172,7 @@ It can often be very useful to see how this outbreak may compare to a simulated 
 To do this we can use the following function to simulate 200 outbreaks and plot
 the interquartile range of these simulations: 
 
-```{r Simulated outbreaks, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center"}
+```{r Simulated outbreaks, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center", cache = TRUE}
 
 outbreakteachR::bootstrap_simulated_plot(
   first_infection_list = first_infection_list,
@@ -203,7 +203,7 @@ follow a Poisson distribution, but is multimodal with a period of approximately
 2 hours. As a result we might choose to conduct the simulations again but sampling
 generation times, infectious periods and recovery times from the observed outbreak:
 
-```{r Simulated outbreaks with sampling, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center"}
+```{r Simulated outbreaks with sampling, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center", cache = TRUE}
 
 outbreakteachR::bootstrap_simulated_plot(
   first_infection_list = first_infection_list,

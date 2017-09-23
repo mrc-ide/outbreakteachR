@@ -23,4 +23,3 @@ optimum layout. Default = 10000}
 \code{infection_network_plot} takes output of \code{first_infection_list} and
 plots either a time accurate network, or a "tree" network with equal branches.
 }
-

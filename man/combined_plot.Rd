@@ -13,4 +13,3 @@ combined_plot(first_infection_list)
 \code{combined_plot} takes output of \code{first_infection_list} and
 plots multiplot of network at 24 hour intervals with the epidemic timeseries
 }
-

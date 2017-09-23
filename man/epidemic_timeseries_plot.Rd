@@ -15,4 +15,3 @@ epidemic_timeseries_plot(outbreak.dataset, title = NULL)
 \code{epidemic_timeseries_plot} takes output of \code{outbreak_dataset_read} and
 plots SIR epidemic time series. Returns ggplot object for plotting.
 }
-

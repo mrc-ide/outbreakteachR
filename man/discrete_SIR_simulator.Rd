@@ -40,4 +40,3 @@ and recovery times. The mean for the secondary cases is equal to R0, and the
 mean for the generation and recovery times is calculated from the user-provided
 first_infection_list and outbreak.dataset.
 }
-

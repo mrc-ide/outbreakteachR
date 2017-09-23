@@ -222,7 +222,6 @@ discrete_SIR_simulator <- function(R0 = 1.8, N = NULL, I = 3, seed.hour = NULL, 
   stop_simulation <- FALSE
 
   ## Main loop
-  browser()
   for (current.hour in ceiling(start):end)
   {
 
@@ -370,7 +369,10 @@ discrete_SIR_simulator <- function(R0 = 1.8, N = NULL, I = 3, seed.hour = NULL, 
           recovery.times.new <- unlist(lapply(infection.times.new, function(x)
           {
 
+            # We have to genearate a recovery time that is greater than the last infection time
+            # This can take very long sometimes so there is a basic catch in to stop after 10 failed attempts
             recovery.time.greater.than.last.infection.check <- 0
+            infinite_catch <- 0
             while(recovery.time.greater.than.last.infection.check==0){
 
               # did they not infect anyone, because if not then draw a recovery time
@@ -382,6 +384,12 @@ discrete_SIR_simulator <- function(R0 = 1.8, N = NULL, I = 3, seed.hour = NULL, 
                 rec.time <- round(rpois(n = 1,lambda = mean.infectious.period) + min(x))
                 if(rec.time >= max(x)){
                   recovery.time.greater.than.last.infection.check <- 1
+                }
+
+                infinite_catch <- infinite_catch + 1
+                if(infinite_catch>10){
+                    rec.time <- max(x)
+                    recovery.time.greater.than.last.infection.check <- 1
                 }
               }
             }

@@ -21,4 +21,3 @@ paramater_boxplots_plot(outbreak.dataset, title = NULL, alpha = NA,
 plots boxplot of epidemiological parameter observations. Returns ggplot
 object for plotting.
 }
-

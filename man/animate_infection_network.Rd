@@ -25,4 +25,3 @@ as an html page
 \details{
 N.B. Function
 }
-

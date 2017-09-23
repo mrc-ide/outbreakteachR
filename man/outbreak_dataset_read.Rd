@@ -21,4 +21,3 @@ if \code{outbreak_dataset_read} throws an error associated with missing data.}
 See inst/extdata for examples of how the excel files should look like before importing. Can be one
 of two types now.
 }
-

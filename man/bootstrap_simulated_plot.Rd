@@ -53,4 +53,3 @@ takes into account S/N}
 a number of SIR epidemics, which are then summarised and plotted. Returns ggplot
 object for plotting.
 }
-

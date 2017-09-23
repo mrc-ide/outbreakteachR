@@ -13,4 +13,3 @@ daily_timeseries_plot(first_infection_list)
 \code{daily_timeseries_plot} takes output of \code{first_infection_list} and
 plots 5x1 plot of infection network at 24 hour intervals
 }
-

@@ -13,4 +13,3 @@ first_infection_list(outbreak.dataset)
 \code{first_infection_list} takes output of \code{outbreak_dataset_read} and
 splits into linelist and contacts for further use, removing reinfections.
 }
-

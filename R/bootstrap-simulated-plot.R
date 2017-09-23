@@ -144,7 +144,7 @@ bootstrap_simulated_plot <- function(R0 = 1.8, I = 3,
   if(include.observed){
 
     ## Create observed
-    res <- outbreakteachR::epidemic_timeseries_plot(first_infection_list = first_infection_list)
+    res <- outbreakteachR::epidemic_timeseries_plot(outbreak.dataset = outbreak.dataset)
 
     ## Combine simulated
     res <- res + ggplot2::geom_ribbon(data = melt_summary_rv, ggplot2::aes(x=times,ymin=min, ymax=max),col=gg_color_hue(3)[2],alpha=alpha,fill=gg_color_hue(3)[2]) +

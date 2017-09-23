@@ -18,4 +18,3 @@ offspring_distribution_plot(outbreak.dataset, include.reinfectons = TRUE,
 \code{offspring_distribution_plot} takes output of \code{outbreak_dataset_read} and
 plots offspring distribution. Returns ggplot object for plotting.
 }
-
