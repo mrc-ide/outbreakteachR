@@ -44,7 +44,8 @@ library(outbreakteachR)
 # If it is on your desktop it will look something like:
 # xlsx.file = "C:/Users/Bob/Desktop/savedworksheet.xlsx"
 outbreak.dataset <- outbreakteachR::outbreak_dataset_read(
-    xlsx.file = system.file("extdata","2016_solutions_final.xlsx",package="outbreakteachR"),
+    xlsx.file = system.file("extdata","2016_solutions_final.xlsx",
+                            package="outbreakteachR"),
     attempt.imputation = TRUE
     )
 
