@@ -1,10 +1,9 @@
 #' Plot epidemic time series
 #'
-#' \code{epidemic_timeseries_plot} takes output of \code{first_infection_list} and
+#' \code{epidemic_timeseries_plot} takes output of \code{outbreak_dataset_read} and
 #' plots SIR epidemic time series. Returns ggplot object for plotting.
 #'
-#' @param first_infection_list Infection list outputted by \code{first_infection_list}
-#' @param N Total population size.
+#' @param outbreak.dataset Outbreak Dataset
 #' @param title Plot title. If NULL then no title will be added. Defult = NULL
 #'
 #' @export
@@ -12,13 +11,16 @@
 #'
 #'
 
-epidemic_timeseries_plot <- function(first_infection_list,N,title=NULL){
+epidemic_timeseries_plot <- function(outbreak.dataset,title=NULL){
 
   # Function to generate ggplot colours
   gg_color_hue <- function(n) {
     hues = seq(15, 375, length = n + 1)
     hcl(h = hues, l = 65, c = 100)[1:n]
   }
+
+  # Create first infection list
+  first_infection_list <- outbreakteachR::first_infection_list(outbreak.dataset)
 
   # Create vector of unique times when events occure, i.e. infection and recovery
   times <- c(0,sort(unique(c(first_infection_list$linelist$Infection_Hours.since.start,

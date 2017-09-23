@@ -5,8 +5,8 @@
 #' of two types now.
 #'
 #' @param xlsx.file Full file path to where xlsx Outbreak dataset is stored.
-#' @param attempt.imputation Boolean detailing whether to impute data. If FALSE (default),
-#' no imputation will occur but if TRUE then it will automatically happen
+#' @param attempt.imputation Boolean detailing whether to impute data. If TRUE (default),
+#' imputation will occur but if FALSE then it will not automatically happen
 #' @param fill.in.end.infection.hours Boolean detailing whether to fill in empty end infection hours. Will be needed
 #' if \code{outbreak_dataset_read} throws an error associated with missing data.
 #' @export
@@ -14,7 +14,7 @@
 #'
 #'
 
-outbreak_dataset_read <- function(xlsx.file,attempt.imputation=FALSE, fill.in.end.infection.hours=FALSE){
+outbreak_dataset_read <- function(xlsx.file,attempt.imputation=TRUE, fill.in.end.infection.hours=FALSE){
 
   # read in .xlsx file of data - see inst/extdata/2016_solutions_final.xlsxfor example formatting
   df <- XLConnect::readWorksheetFromFile(xlsx.file,sheet=1,startRow = 2,endCol = 20,colTypes=c(rep("character",15),rep("character",5)),useCachedValues=T)

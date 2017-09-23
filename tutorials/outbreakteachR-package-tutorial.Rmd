@@ -4,13 +4,12 @@ author: "OJ Watson"
 date: '`r Sys.Date()`'
 output:
   html_document:
-    toc: yes
-    css: knitr.css
     code_folding: show
+    css: knitr.css
     fig_caption: yes
     theme: readable
+    toc: yes
     toc_float: yes
-
 ---
 
 ## Overview 
@@ -134,9 +133,9 @@ output in a new tab please click [here](https://cdn.rawgit.com/OJWatson/outbreak
 We can also use the collected data to plot the epidemic time series, using the times
 recorded for when the infection started and ended in each individual.
 
-```{r Epidemic Time Series, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center"}
+```{r Epidemic Time Series, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center", cache = TRUE}
 
-outbreakteachR::epidemic_timeseries_plot(first_infection_list = first_infection_list)
+outbreakteachR::epidemic_timeseries_plot(outbreak.dataset = outbreak.dataset)
 
 ```
 
@@ -150,7 +149,7 @@ outbreakteachR::paramater_boxplots_plot(outbreak.dataset=outbreak.dataset)
 
 ```
 
-We might also want to view the offspring distribution to see how it compares to the poisson distribution that was used 
+We might also want to view the offspring distribution to see how it compares to the Poisson distribution that was used 
 to generate the actual observed data. 
 
 ```{r Offspring distribution, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center"}
@@ -161,7 +160,7 @@ outbreakteachR::offspring_distribution_plot(outbreak.dataset=outbreak.dataset,in
 
 What we can see from above is the confirmed number of secondary cases from each individual,
 which has a mean very close to 1.8. However if we might also want to look at the distribution
-describing only the succesful contacts, i.e. those that led to infections rather than reinfections. 
+describing only the successful contacts, i.e. those that led to infections rather than reinfections. 
 
 ```{r Offspring distribution with zero, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center"}
 
@@ -194,9 +193,9 @@ outbreak dataset. The number of secondary infections is then drawn from a Poisso
 distribution with a mean of 1.8, as was used in the practical. The time of each 
 infection  is also drawn from a Poisson with a mean equal to the observed 
 mean generation times. The infected individual then recovers after a period of time, 
-which is sampled from a poisson with mean equal to the mean infectious period. 
+which is sampled from a Poisson with mean equal to the mean infectious period. 
 If they do not infect anyone then they recover after a period of time drawn from a 
-poisson with mean equal to the mean recovery time for the observed outbreak. 
+Poisson with mean equal to the mean recovery time for the observed outbreak. 
 Simulations are then stopped after a period of time equal to the length of the observed outbreak.
 
 Given this simulation methodology we can start to hypothesise about why the simulated
@@ -222,13 +221,13 @@ outbreakteachR::bootstrap_simulated_plot(
 This simulation is much better, with the timing of the infection peak much closer
 to the observed data. This sampling method however still fails to perfectly capture the
 temporal dynamics exhibited. There are many reasons why this is, but we can begin
-to understand why this is by simply seeing how many infections there are that occured on
+to understand why this is by simply seeing how many infections there are that occurred on
 day 1, which is much larger than would be expected given 3 seeds and the generation
 times that we sampled. 
 
 ## Summary and further thoughts
 
-Hopefully the above tutorial has shown how the outbreakteachR outbreak practical can be extended
+Hopefully the above tutorial has shown how the *outbreakteachR* outbreak practical can be extended
 using R to extend the analysis and aid in visualising the outbreak process.
 
 ---
