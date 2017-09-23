@@ -27,10 +27,7 @@ present the key epidemiological parameters.
 ## Loading the data
 
 First we will read in the data from wherever you have stored the .xlsx file. Below
-we will be using the example included with the package. The output of the following
-section is stored within the package as well as a sample dataset called "paper.outbreak.2016".
-If you are using the sample dataset in the remainder of the tutorial then remember to
-set the outbreak.dataset variable equal to paper.outbreak.2016.
+we will be using the example dataset included with the package.
 
 
 ```{r Loading the data, include=TRUE, message = FALSE, warning = FALSE}
@@ -42,24 +39,18 @@ set the outbreak.dataset variable equal to paper.outbreak.2016.
 library(outbreakteachR)
 
 # With the package installed first read in the data.
-# This function will throw warnings highlighting rows where there may be errors in the excel file
-# Remember to replace the argument for xlsx.file to the local file path where your saved worksheet is
-# If it is on your desktop it will look something like xlsx.file = "C:/Users/Bob/Desktop/savedworksheet.xlsx"
-outbreak.dataset <- outbreakteachR::outbreak_dataset_read(xlsx.file = system.file("extdata","2016_solutions_final.xlsx",package="outbreakteachR"),
-                                                 attempt.imputation = TRUE)
+# This function will highlight rows where there may be errors in the excel file
+# Remember to replace the argument for xlsx.file to the local file
+# If it is on your desktop it will look something like:
+# xlsx.file = "C:/Users/Bob/Desktop/savedworksheet.xlsx"
+outbreak.dataset <- outbreakteachR::outbreak_dataset_read(
+    xlsx.file = system.file("extdata","2016_solutions_final.xlsx",package="outbreakteachR"),
+    attempt.imputation = TRUE
+    )
 
 # Visualise the dataset
 str(outbreak.dataset)
 
-# This dataset is also saved within the outbreakteachR package and can be accessed as such:
-data("paper.outbreak.2016",package="outbreakteachR")
-## Confirm the datasets are the same
-identical(paper.outbreak.2016,outbreak.dataset)
-
-# If you are using the sample dataset for the remainder of the tutorial then 
-# uncomment the following line of code:
-
-# outbreak.dataset <- paper.outbreak.2016
 ```
 
 ## Create an infection network
@@ -83,18 +74,21 @@ unique(first_infection_list$linelist$Reinfection)
 # Next we will create a plot of the outbreak that is time-orientated, i.e. the relative
 # node positions represents the point in time that an individual was infected:
 
-outbreakteachR::infection_network_plot(first_infection_list = first_infection_list, time = TRUE, log = FALSE)
+outbreakteachR::infection_network_plot(first_infection_list = first_infection_list, 
+                                       time = TRUE, log = FALSE)
 
 # We might find that the outbreak is quite cramped in teh above as a lot of infections happen over 
 # a very short time frame with respect to the 5 day outbreak. We can thus log transform the times of
 # infection to spread out the outbreak for further clarity at the earlier stages
 
-outbreakteachR::infection_network_plot(first_infection_list = first_infection_list, time = TRUE, log = TRUE)
+outbreakteachR::infection_network_plot(first_infection_list = first_infection_list,
+                                       time = TRUE, log = TRUE)
 
 # We can also visualise the network in a more "tree" like fashion which shows each
 # infection event with an equal length branch for easier visualisation:
 
-outbreakteachR::infection_network_plot(first_infection_list = first_infection_list, time = FALSE)
+outbreakteachR::infection_network_plot(first_infection_list = first_infection_list,
+                                       time = FALSE)
 
 # Lastly we can visualise what the outbreak looked like by viewing the outbreak
 # at the end of each day, i.e. at 24 hour intervals
@@ -123,7 +117,7 @@ When you run the above function the animated network will automatically load in
 a web browser and save the html page to file path specified. This html is embedded
 below, and the animated network can be viewed by clicking play, and the duration
 of the animation changed with the menu in the top left. To view the html page
-output in a new tab please click [here](https://cdn.rawgit.com/OJWatson/outbreakteachR/master/tutorials/Animated-Network-Dynamic.html)
+output in a new tab please click [\textcolor{blue}{here}](https://cdn.rawgit.com/OJWatson/outbreakteachR/master/tutorials/Animated-Network-Dynamic.html).
 
 
 <iframe width="800" height="630" frameBorder="0" src="https://cdn.rawgit.com/OJWatson/outbreakteachR/master/tutorials/Animated-Network-Dynamic.html" allowfullscreen></iframe>
@@ -154,7 +148,9 @@ to generate the actual observed data.
 
 ```{r Offspring distribution, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center"}
 
-outbreakteachR::offspring_distribution_plot(outbreak.dataset=outbreak.dataset,include.reinfectons = TRUE,title = 2016)
+outbreakteachR::offspring_distribution_plot(outbreak.dataset=outbreak.dataset,
+                                            include.reinfectons = TRUE,
+                                            title = 2016)
 
 ```
 
@@ -164,7 +160,9 @@ describing only the successful contacts, i.e. those that led to infections rathe
 
 ```{r Offspring distribution with zero, include=TRUE, message = FALSE, warning = FALSE, fig.align = "center"}
 
-outbreakteachR::offspring_distribution_plot(outbreak.dataset=outbreak.dataset, include.reinfectons = FALSE,title=2016)
+outbreakteachR::offspring_distribution_plot(outbreak.dataset=outbreak.dataset,
+                                            include.reinfectons = FALSE,
+                                            title=2016)
 
 ```
 

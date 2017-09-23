@@ -4,17 +4,15 @@
 \alias{epidemic_timeseries_plot}
 \title{Plot epidemic time series}
 \usage{
-epidemic_timeseries_plot(first_infection_list, N, title = NULL)
+epidemic_timeseries_plot(outbreak.dataset, title = NULL)
 }
 \arguments{
-\item{first_infection_list}{Infection list outputted by \code{first_infection_list}}
-
-\item{N}{Total population size.}
+\item{outbreak.dataset}{Outbreak Dataset}
 
 \item{title}{Plot title. If NULL then no title will be added. Defult = NULL}
 }
 \description{
-\code{epidemic_timeseries_plot} takes output of \code{first_infection_list} and
+\code{epidemic_timeseries_plot} takes output of \code{outbreak_dataset_read} and
 plots SIR epidemic time series. Returns ggplot object for plotting.
 }
 

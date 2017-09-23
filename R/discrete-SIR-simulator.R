@@ -222,6 +222,7 @@ discrete_SIR_simulator <- function(R0 = 1.8, N = NULL, I = 3, seed.hour = NULL, 
   stop_simulation <- FALSE
 
   ## Main loop
+  browser()
   for (current.hour in ceiling(start):end)
   {
 

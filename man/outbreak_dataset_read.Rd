@@ -4,14 +4,14 @@
 \alias{outbreak_dataset_read}
 \title{Read in and remove sensitive data}
 \usage{
-outbreak_dataset_read(xlsx.file, attempt.imputation = FALSE,
+outbreak_dataset_read(xlsx.file, attempt.imputation = TRUE,
   fill.in.end.infection.hours = FALSE)
 }
 \arguments{
 \item{xlsx.file}{Full file path to where xlsx Outbreak dataset is stored.}
 
-\item{attempt.imputation}{Boolean detailing whether to impute data. If FALSE (default),
-no imputation will occur but if TRUE then it will automatically happen}
+\item{attempt.imputation}{Boolean detailing whether to impute data. If TRUE (default),
+imputation will occur but if FALSE then it will not automatically happen}
 
 \item{fill.in.end.infection.hours}{Boolean detailing whether to fill in empty end infection hours. Will be needed
 if \code{outbreak_dataset_read} throws an error associated with missing data.}
