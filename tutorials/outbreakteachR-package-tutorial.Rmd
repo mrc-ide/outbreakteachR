@@ -33,7 +33,7 @@ we will be using the example dataset included with the package.
 ```{r Loading the data, include=TRUE, message = FALSE, warning = FALSE}
 
 # First make sure the package is installed
-devtools::install_github("mrc-ide/outbreakteachR")
+devtools::install_github("mrc-ide/outbreakteachR", ref="mrc-branch")
 
 # Load package - Warning messages will be thrown however these are not a problem
 library(outbreakteachR)

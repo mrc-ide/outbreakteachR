@@ -25,7 +25,7 @@ Once devtools is installed it is best to restart our R session. To do this eithe
 has been restarted the package can be installed and loaded using:
 
 ```r
-devtools::install_github("mrc-ide/outbreakteachR")
+devtools::install_github("mrc-ide/outbreakteachR", ref="mrc-branch")
 library(outbreakteachR)
 ```
 
