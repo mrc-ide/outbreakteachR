@@ -9,7 +9,7 @@
 #'
 #' @export
 #'
-#'
+#' @aliases offspring_distribution_plot
 #'
 
 offspring_distribution_plot <- function(outbreak.dataset,

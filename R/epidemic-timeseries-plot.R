@@ -8,7 +8,7 @@
 #'
 #' @export
 #'
-#'
+#' @aliases epidemic_timeseries_plot
 #'
 
 epidemic_timeseries_plot <- function(outbreak.dataset,title=NULL){

@@ -30,6 +30,7 @@
 #'
 #' @export
 #'
+#' @aliases bootstrap_simulated_plot
 #'
 
 

@@ -7,7 +7,7 @@
 #'
 #' @export
 #'
-#'
+#' @aliases combined_plot
 #'
 
 combined_plot <- function(first_infection_list){

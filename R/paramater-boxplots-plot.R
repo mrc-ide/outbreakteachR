@@ -11,7 +11,7 @@
 #'
 #' @export
 #'
-#'
+#' @aliases paramater_boxplots_plot
 #'
 
 paramater_boxplots_plot <- function(outbreak.dataset,title=NULL,

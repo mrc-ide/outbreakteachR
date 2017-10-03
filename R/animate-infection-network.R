@@ -14,7 +14,7 @@
 #'
 #' @export
 #'
-#'
+#' @aliases animate_infection_network
 #'
 
 animate_infection_network <- function(first_infection_list, file, year=NULL, detach = FALSE){

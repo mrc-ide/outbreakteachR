@@ -11,7 +11,7 @@
 #'
 #' @export
 #'
-#'
+#' @aliases generation_time_daily_plot
 #'
 
 generation_time_daily_plot <- function(outbreak.dataset,title=NULL,

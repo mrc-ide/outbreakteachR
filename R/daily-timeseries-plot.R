@@ -7,7 +7,7 @@
 #'
 #' @export
 #'
-#'
+#' @aliases daily_timeseries_plot
 #'
 
 daily_timeseries_plot <- function(first_infection_list){

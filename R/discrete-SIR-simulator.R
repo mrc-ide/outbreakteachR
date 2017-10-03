@@ -25,6 +25,7 @@
 #'
 #' @export
 #'
+#' @aliases discrete_SIR_simulator
 #'
 
 discrete_SIR_simulator <- function(R0 = 1.8, N = NULL, I = 3, seed.hour = NULL, first_infection_list,

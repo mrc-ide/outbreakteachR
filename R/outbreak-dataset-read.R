@@ -9,45 +9,32 @@
 #' imputation will occur but if FALSE then it will not automatically happen
 #' @param fill.in.end.infection.hours Boolean detailing whether to fill in empty end infection hours. Will be needed
 #' if \code{outbreak_dataset_read} throws an error associated with missing data.
+#'
 #' @export
 #'
-#'
+#' @aliases outbreak_dataset_read
 #'
 
 outbreak_dataset_read <- function(xlsx.file,attempt.imputation=TRUE, fill.in.end.infection.hours=FALSE){
 
   # read in .xlsx file of data - see inst/extdata/2016_solutions_final.xlsxfor example formatting
-  df <- XLConnect::readWorksheetFromFile(xlsx.file,sheet=1,startRow = 2,endCol = 20,colTypes=c(rep("character",15),rep("character",5)),useCachedValues=T)
+  #df <- XLConnect::readWorksheetFromFile(xlsx.file,sheet=1,startRow = 2,endCol = 20,colTypes=c(rep("character",15),rep("character",5)),useCachedValues=T)
+  df <- data.frame(readxl::read_excel(xlsx.file,skip=1)[,1:20])
+  df <- df[,c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,17)]
+
+  names(df) <- c("ID","Parent.ID","Reinfection","Infection_Date","Infection_Time",
+                 "Infection_Hours.since.start","Symptoms_Date","Symptoms_Time","Symptoms_Hours.since.start",
+                 "End_Infection_Date","End_Infection_Time","End_Infection_Hours.since.start","Attempted.",
+                 "Successful","Onward_Infection_Hours.since.start")
 
   # grab seed positions
   seeds <- which(df$Parent.ID=="Seed")
 
-  # Handle for other type of excel sheet provided
-  if(is.element("Hours.since.start.4",names(df))){
 
-    # Given variability match for these columns which are the beginning columns in the old sheet style
-    col.pos <- match(c("ID","Parent.ID","Reinfection","Date","Time","Hours.since.start",
-      "Date.1","Time.1","Hours.since.start.1","Date.2","Time.2","Hours.since.start.2",
-      "Attempted.","Successful","Hours.since.start.4"),names(df))
+  # turn into useful numeric type, supressing warnings that throw due to characters in Parent.ID which are the seeds
+  df[,c(1,2,6,9,12,13,14,15)] <- suppressWarnings(lapply(df[,c(1,2,6,9,12,13,14,15)],as.numeric))
 
-    # subset by these positions
-    df <- df[,col.pos]
-
-    # turn into useful numeric type, supressing warnings that throw due to characters in Parent.ID which are the seeds
-    df[,c(1,2,6,9,12,13,14,15)] <- suppressWarnings(lapply(df[,c(1,2,6,9,12,13,14,15)],as.numeric))
-
-  } else {
-
-    # turn into useful numeric type, supressing warnings that throw due to characters in Parent.ID which are the seeds
-    df[,c(1,2,6,9,12,13,14,15)] <- suppressWarnings(lapply(df[,c(1,2,6,9,12,13,14,15)],as.numeric))
-
-  }
-
-  names(df)[c(4:12,15)] <- c("Infection_Date","Infection_Time","Infection_Hours.since.start",
-    "Symptoms_Date","Symptoms_Time","Symptoms_Hours.since.start",
-    "End_Infection_Date","End_Infection_Time","End_Infection_Hours.since.start",
-    "Onward_Infection_Hours.since.start")
-
+  # tidy logicals
   df$Reinfection <- as.logical(df$Reinfection)
 
   ## ERROR CHECKING ##

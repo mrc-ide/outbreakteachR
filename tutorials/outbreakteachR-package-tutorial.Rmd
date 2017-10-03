@@ -14,13 +14,13 @@ output:
 
 ## Overview 
 
-  The outbreakteachR R package has been designed to be an additional tool in helping assist
+The outbreakteachR R package has been designed to be an additional tool in helping assist
 with running the "paper outbreak" practical. The package assumes that the data has
 been collected and stored in a similar fashion to that presented within the xlsx file
-included within the external data directory, and that the main data from the first 
-sheet in the excel document, between cell A2:Oxxx, is to be used.
+included within the external data directory. As such it will use the main data from the first 
+sheet in the excel document, between columns A to O inclusive.
 
-  Given the above specifications, the tutorial below will give an overview of how
+Given the above specifications, the tutorial below will give an overview of how
 to read in the data and produce a number of plots to help visualise the outbreak and
 present the key epidemiological parameters.
 

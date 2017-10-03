@@ -13,7 +13,7 @@
 #'
 #' @export
 #'
-#'
+#' @aliases infection_network_plot
 #'
 
 infection_network_plot <- function(first_infection_list, time = TRUE,log=TRUE,iterations = 10000){

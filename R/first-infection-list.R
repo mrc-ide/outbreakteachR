@@ -7,7 +7,7 @@
 #'
 #' @export
 #'
-#'
+#' @aliases first_infection_list
 #'
 
 first_infection_list <- function(outbreak.dataset){
