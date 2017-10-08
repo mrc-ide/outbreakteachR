@@ -118,10 +118,10 @@ When you run the above function the animated network will automatically load in
 a web browser and save the html page to file path specified. This html is embedded
 below, and the animated network can be viewed by clicking play, and the duration
 of the animation changed with the menu in the top left. To view the html page
-output in a new tab please click [\textcolor{blue}{here}](https://cdn.rawgit.com/OJWatson/outbreakteachR/master/tutorials/package_tutorial/Animated-Network-Dynamic.html).
+output in a new tab please click [\textcolor{blue}{here}](https://cdn.rawgit.com/mrc-ide/outbreakteachR/mrc-branch/tutorials/package_tutorial/Animated-Network-Dynamic.html).
 
 
-<iframe width="800" height="630" frameBorder="0" src="https://cdn.rawgit.com/OJWatson/outbreakteachR/master/tutorials/package_tutorial/Animated-Network-Dynamic.html" allowfullscreen></iframe>
+<iframe width="800" height="630" frameBorder="0" src="https://cdn.rawgit.com/mrc-ide/outbreakteachR/mrc-branch/tutorials/package_tutorial/Animated-Network-Dynamic.html" allowfullscreen></iframe>
 
 ## Epidemic Time Series
 

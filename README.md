@@ -1,6 +1,6 @@
 # outbreakteachR
 
-[![Build Status](https://travis-ci.org/OJWatson/outbreakteachR.png?branch=master)](https://travis-ci.org/OJWatson/outbreakteachR)
+[![Build Status](https://travis-ci.org/mrc-ide/outbreakteachR.png?branch=master)](https://travis-ci.org/mrc-ide/outbreakteachR)
 
 ### What is this?
 
