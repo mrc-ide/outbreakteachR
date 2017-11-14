@@ -3,7 +3,7 @@
 [![Travis-CI Build Status](https://travis-ci.org/mrc-ide/outbreakteachR.png?branch=mrc-branch)](https://travis-ci.org/mrc-ide/outbreakteachR)
 
 
-![Alt text]()<img src="img/logo.svg">
+![]()<img src="img/logo.svg">
 
 ### What is this?
 
