@@ -1,6 +1,9 @@
 # outbreakteachR
 
-[![Build Status](https://travis-ci.org/mrc-ide/outbreakteachR.png?branch=mrc-branch)](https://travis-ci.org/mrc-ide/outbreakteachR)
+[![Travis-CI Build Status](https://travis-ci.org/mrc-ide/outbreakteachR.png?branch=mrc-branch)](https://travis-ci.org/mrc-ide/outbreakteachR)
+
+
+![](https://github.com/mrc-ide/outbreakteachR/img/logo.svg)
 
 ### What is this?
 
