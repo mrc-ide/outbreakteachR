@@ -5,6 +5,10 @@
 
 ![]()<img src="img/logo.svg" width="50%">
 
+***
+> Now published in Epidemics - "Íde Cremin, Oliver Watson, Alastair Heffernan, Natsuko Imai, Norin Ahmed, Sandra Bivegete, Teresia Kimani, Demetris Kyriacou, Preveina Mahadevan, Rima Mustafa, Panagiota Pagoni, Marisa Sophiea, Charlie Whittaker, Leo Beacroft, Steven Riley, Matthew C. Fisher, An infectious way to teach students about outbreaks, Epidemics, Available online 9 December 2017, ISSN 1755-4365, https://doi.org/10.1016/j.epidem.2017.12.002" 
+***
+
 ### What is this?
 
 outbreakteachR is a package designed to assist in demonstration of analysis associated to "paper outbreak" teaching practical. It is a collection of functions designed to ease analaysis of the paper outbreak practical within R. This includes importing and cleaning data from an excel sheet, viewing the infection network, visualising the outbreak as an animation, and calculating the epidemiological parameters associated with the practical.
