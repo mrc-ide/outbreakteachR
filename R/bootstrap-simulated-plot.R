@@ -29,7 +29,7 @@
 #' takes into account S/N
 #'
 #' @export
-#'
+#' @importFrom rlang .data
 #' @aliases bootstrap_simulated_plot
 #'
 
@@ -113,14 +113,20 @@ bootstrap_simulated_plot <- function(R0 = 1.8, I = 3,
 
   # Create plot
   res <- ggplot2::ggplot(melt_summary_rv) +
-    ggplot2::geom_ribbon(data = melt_summary_rv, ggplot2::aes(x=times,ymin=min, ymax=max),col=gg_color_hue(3)[2],alpha=alpha,fill=gg_color_hue(3)[2]) +
-    ggplot2::geom_ribbon(data = melt_summary_sv, ggplot2::aes(x=times,ymin=min, ymax=max),col=gg_color_hue(3)[3],alpha=alpha,fill=gg_color_hue(3)[3]) +
-    ggplot2::geom_ribbon(data = melt_summary_iv, ggplot2::aes(x=times,ymin=min, ymax=max),col=gg_color_hue(3)[1],alpha=alpha,fill=gg_color_hue(3)[1])
+    ggplot2::geom_ribbon(data = melt_summary_rv, ggplot2::aes(x=.data$times,ymin=min, ymax=max),
+                         col=gg_color_hue(3)[2],alpha=alpha,fill=gg_color_hue(3)[2]) +
+    ggplot2::geom_ribbon(data = melt_summary_sv, ggplot2::aes(x=.data$times,ymin=min, ymax=max),
+                         col=gg_color_hue(3)[3],alpha=alpha,fill=gg_color_hue(3)[3]) +
+    ggplot2::geom_ribbon(data = melt_summary_iv, ggplot2::aes(x=.data$times,ymin=min, ymax=max),
+                         col=gg_color_hue(3)[1],alpha=alpha,fill=gg_color_hue(3)[1])
 
   if(include.line){
-    res <- res + ggplot2::geom_line(data = melt_summary_sv, ggplot2::aes(x=times,y=value,color="S"),linetype = "dashed",size=size) +
-      ggplot2::geom_line(data = melt_summary_rv,ggplot2::aes(x=times,y=value,color="R"),linetype = "dashed",size=size) +
-      ggplot2::geom_line(data = melt_summary_iv, ggplot2::aes(x=times,y=value,color="I"),linetype = "dashed",size=size)
+    res <- res + ggplot2::geom_line(data = melt_summary_sv, ggplot2::aes(x=.data$times,y=.data$value,color="S"),
+                                    linetype = "dashed",size=size) +
+      ggplot2::geom_line(data = melt_summary_rv,ggplot2::aes(x=.data$times,y=.data$value,color="R"),
+                         linetype = "dashed",size=size) +
+      ggplot2::geom_line(data = melt_summary_iv, ggplot2::aes(x=.data$times,y=.data$value,color="I"),
+                         linetype = "dashed",size=size)
   }
 
   res <- res +  ggplot2::scale_x_continuous(breaks=seq(0,24*5,24),limits = c(0,120),expand = c(0.01,0)) +
@@ -148,15 +154,15 @@ bootstrap_simulated_plot <- function(R0 = 1.8, I = 3,
     res <- outbreakteachR::epidemic_timeseries_plot(outbreak.dataset = outbreak.dataset)
 
     ## Combine simulated
-    res <- res + ggplot2::geom_ribbon(data = melt_summary_rv, ggplot2::aes(x=times,ymin=min, ymax=max),col=gg_color_hue(3)[2],alpha=alpha,fill=gg_color_hue(3)[2]) +
-      ggplot2::geom_ribbon(data = melt_summary_sv, ggplot2::aes(x=times,ymin=min, ymax=max),col=gg_color_hue(3)[3],alpha=alpha,fill=gg_color_hue(3)[3]) +
-      ggplot2::geom_ribbon(data = melt_summary_iv, ggplot2::aes(x=times,ymin=min, ymax=max),col=gg_color_hue(3)[1],alpha=alpha,fill=gg_color_hue(3)[1])
+    res <- res + ggplot2::geom_ribbon(data = melt_summary_rv, ggplot2::aes(x=.data$times,ymin=min, ymax=max),col=gg_color_hue(3)[2],alpha=alpha,fill=gg_color_hue(3)[2]) +
+      ggplot2::geom_ribbon(data = melt_summary_sv, ggplot2::aes(x=.data$times,ymin=min, ymax=max),col=gg_color_hue(3)[3],alpha=alpha,fill=gg_color_hue(3)[3]) +
+      ggplot2::geom_ribbon(data = melt_summary_iv, ggplot2::aes(x=.data$times,ymin=min, ymax=max),col=gg_color_hue(3)[1],alpha=alpha,fill=gg_color_hue(3)[1])
 
     ## Add the mean line from simulated if required
     if(include.line){
-      res <- res + ggplot2::geom_line(data = melt_summary_sv, ggplot2::aes(x=times,y=value,color="S"),linetype = "dashed",size=size) +
-        ggplot2::geom_line(data = melt_summary_rv, ggplot2::aes(x=times,y=value,color="R"),linetype = "dashed",size=size) +
-        ggplot2::geom_line(data = melt_summary_iv, ggplot2::aes(x=times,y=value,color="I"),linetype = "dashed",size=size)
+      res <- res + ggplot2::geom_line(data = melt_summary_sv, ggplot2::aes(x=.data$times,y=.data$value,color="S"),linetype = "dashed",size=size) +
+        ggplot2::geom_line(data = melt_summary_rv, ggplot2::aes(x=.data$times,y=.data$value,color="R"),linetype = "dashed",size=size) +
+        ggplot2::geom_line(data = melt_summary_iv, ggplot2::aes(x=.data$times,y=.data$value,color="I"),linetype = "dashed",size=size)
     }
 
 

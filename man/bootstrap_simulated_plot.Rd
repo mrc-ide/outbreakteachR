@@ -7,8 +7,8 @@
 bootstrap_simulated_plot(R0 = 1.8, I = 3, first_infection_list,
   outbreak.dataset, replicates = 2000, sampling = FALSE,
   lower.quantile = 0.25, upper.quantile = 0.75, title = NULL,
-  alpha = 0.2, size = 1, include.line = TRUE, include.observed = FALSE,
-  exponential = FALSE)
+  alpha = 0.2, size = 1, include.line = TRUE,
+  include.observed = FALSE, exponential = FALSE)
 }
 \arguments{
 \item{R0}{Reproductive number. Default = 1.8}

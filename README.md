@@ -14,7 +14,7 @@
 outbreakteachR is a package designed to assist in demonstration of analysis associated to "paper outbreak" teaching practical. It is a collection of functions designed to ease analaysis of the paper outbreak practical within R. This includes importing and cleaning data from an excel sheet, viewing the infection network, visualising the outbreak as an animation, and calculating the epidemiological parameters associated with the practical.
 
 ***
-> To view the tutorial please click [here](https://cdn.rawgit.com/mrc-ide/outbreakteachR/68f9ecf43d85e316747758b1378346258bcdf8c6/tutorials/package_tutorial/outbreakteachR-package-tutorial.html)
+> To view the tutorial please click [here](https://htmlpreview.github.io/?https://cdn.jsdelivr.net/gh/OJWatson/outbreakteachR@6b4a976e1faaae25926dcb568647b961e3a9d94b/tutorials/outbreakteachR-package-tutorial.html)
 
 ***
 

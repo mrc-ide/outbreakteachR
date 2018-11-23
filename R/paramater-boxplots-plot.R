@@ -26,10 +26,10 @@ paramater_boxplots_plot <- function(outbreak.dataset,title=NULL,
                            id=c("ID"))
 
   # create initial boxplot
-  gg <- ggplot2::ggplot(melted) + ggplot2::geom_boxplot(ggplot2::aes(x=variable,y=value),outlier.shape = NA)
+  gg <- ggplot2::ggplot(melted) + ggplot2::geom_boxplot(ggplot2::aes(x=.data$variable,y=.data$value),outlier.shape = NA)
 
   # add overlay of raw data and make pretty
-  res <- gg + ggplot2::geom_point(ggplot2::aes(x=variable,y=value,alpha=alpha),
+  res <- gg + ggplot2::geom_point(ggplot2::aes(x=.data$variable,y=.data$value,alpha=alpha),
                                   position = ggplot2::position_jitter(width = jitter.width),na.rm = T, size = 0.8) +
     ggplot2::ylab("Time (hours)") +
     ggplot2::theme_classic() + ggplot2::theme_light() +

@@ -34,21 +34,21 @@ generation_time_daily_plot <- function(outbreak.dataset,title=NULL,
 
     # create initial boxplot
     gg <- ggplot2::ggplot(outbreak.dataset[!is.na(outbreak.dataset$Generation_Time_Hours),],
-                          aes(x = factor(day_am,
+                          ggplot2::aes(x = factor(.data$day_am,
                                          levels = c("Day 1 AM","Day 1 PM","Day 2 AM",
                                                     "Day 2 PM","Day 3 AM","Day 3 PM",
                                                     "Day 4 AM","Day 4 PM","Day 5 AM",
                                                     "Day 5 PM")),
-                              y = Generation_Time_Hours)) +
-      geom_point(position = ggplot2::position_jitter(width = jitter.width)) +
-      scale_x_discrete(drop=FALSE)
+                              y = .data$Generation_Time_Hours)) +
+        ggplot2::geom_point(position = ggplot2::position_jitter(width = jitter.width)) +
+        ggplot2::scale_x_discrete(drop=FALSE)
 
   } else {
 
     # create initial boxplot
     gg <- ggplot2::ggplot(outbreak.dataset[!is.na(outbreak.dataset$Generation_Time_Hours),],
-                          ggplot2::aes(x = factor(Infection_Date),
-                              y=Generation_Time_Hours)) +
+                          ggplot2::aes(x = factor(.data$Infection_Date),
+                              y=.data$Generation_Time_Hours)) +
       ggplot2::geom_point(position = ggplot2::position_jitter(width = jitter.width)) +
       ggplot2::scale_x_discrete(drop=FALSE)
 

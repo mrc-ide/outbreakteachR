@@ -8,7 +8,7 @@ Description: Importing and analysing data sheet created within teaching "paper
     outbreak". Tools include visualisation and animation of the outbreak dynamics,
     example simualtion methods.
 Depends:
-    R (>= 3.3.2),
+    R (>= 3.3.0),
     ndtv
 Imports:
     network (>= 1.13),
@@ -23,7 +23,8 @@ Imports:
     extrafont,
     statnet.common,
     base64,
-    plyr
+    plyr,
+    rlang
 License: MIT + file LICENSE
 LazyData: TRUE
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1

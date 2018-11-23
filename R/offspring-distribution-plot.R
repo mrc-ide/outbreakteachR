@@ -32,7 +32,8 @@ offspring_distribution_plot <- function(outbreak.dataset,
   }
 
   # Create ggplot object
-  res <-ggplot2::ggplot(offspring_distribution_df, ggplot2::aes(R0,..density..)) +
+    dens <- "..density.."
+  res <-ggplot2::ggplot(offspring_distribution_df, ggplot2::aes_string("R0",dens)) +
     ggplot2::geom_histogram(bins = length(-1:7),colour = "black", fill = "white") +
     ggplot2::geom_freqpoly(bins = length(-1:7), size = 1) +
     ggplot2::xlab(bquote('Offspring Distribution' ~ (R[0])))  +

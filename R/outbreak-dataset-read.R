@@ -137,7 +137,7 @@ outbreak_dataset_read <- function(xlsx.file,attempt.imputation=TRUE, fill.in.end
     if(length(wrong_rows)>0) stop (paste("Missing time of onward infection information for individuals who cause non-reinfection infections at rows",paste(wrong_rows+2,collapse=", ")))
 
     # If we have decided not to error check then simply fill the end infection hours in
-  } else if (fill.in.end.infection.dates == TRUE) {
+  } else if (fill.in.end.infection.hours == TRUE) {
     non.reinfections <- which(df$Reinfection==FALSE)
     wrong_rows <- non.reinfections[which(is.na(df$End_Infection_Hours.since.start[non.reinfections]))]
     df$End_Infection_Hours.since.start[wrong_rows] <- max(df$End_Infection_Hours.since.start,na.rm=TRUE)

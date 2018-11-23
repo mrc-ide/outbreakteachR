@@ -49,8 +49,8 @@ epidemic_timeseries_plot <- function(outbreak.dataset,title=NULL){
   extrafont::loadfonts(device = "win",quiet=T)
 
   # Create plot
-  res <- ggplot2::ggplot(melt) + ggplot2::geom_point(ggplot2::aes(x=Times,y=value,color=variable),alpha=0.25,size=3) +
-    ggplot2::geom_line(ggplot2::aes(x=Times,y=value,color=variable),size=1) +
+  res <- ggplot2::ggplot(melt) + ggplot2::geom_point(ggplot2::aes(x=.data$Times,y=.data$value,color=.data$variable),alpha=0.25,size=3) +
+    ggplot2::geom_line(ggplot2::aes(x=.data$Times,y=.data$value,color=.data$variable),size=1) +
     ggplot2::scale_x_continuous(breaks=seq(0,24*5,24),limits = c(0,120),expand = c(0.01,0)) +
     ggplot2::xlab("Time (hours)") +
     ggplot2::ylab("Number of Students") +
